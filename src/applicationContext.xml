@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<beans 
+	xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- 配置数据源 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<!-- 指定连接数据库的驱动 -->
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<!-- 指定连接数据库的  URL -->
+		<property name="url" value="jdbc:mysql://localhost:3306/lostandfound"></property>
+		<!-- 指定连接数据库的用户名 -->
+		<property name="username" value="root"></property>
+		<!-- 指定连接数据库的密码 -->
+		<property name="password" value=""></property>
+		<!-- 指定连接数据库的连接池的初始化大小 -->
+		<property name="initialSize" value="5"></property>
+		<!-- 指定连接数据库的连接池的最大连接数 -->
+		<property name="maxActive" value="100"></property>
+		<!-- 指定连接数据库的连接池最大空闲时间 -->
+		<property name="maxIdle" value="30"></property>
+		<!-- 指定连接数据库的连接池最大等待时间 -->
+		<property name="maxWait" value="1000"></property>
+	</bean>
+	
+	<!-- 配置SessionFactory -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.hbm2ddl.auto">
+					update
+				</prop>
+				<prop key="hibernate.show_sql">
+					true
+				</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/pojo/model/User.hbm.xml</value>
+				<value>com/pojo/model/Vote.hbm.xml</value>
+				<value>com/pojo/model/Admin.hbm.xml</value>
+				<value>com/pojo/model/Itemtype.hbm.xml</value>
+				<value>com/pojo/model/FindInfo.hbm.xml</value>
+				<value>com/pojo/model/LostInfo.hbm.xml</value>
+				<value>com/pojo/model/ThanksInfo.hbm.xml</value>
+				<value>com/pojo/model/LeiFengBang.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 配置userDao -->
+	<bean id="userDao" class="com.pojo.impl.UserDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 配置AdminDao -->
+	<bean id="adminDao" class="com.pojo.impl.AdminDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 配置ItemTypeDao -->
+	<bean id="itDao" class="com.pojo.impl.ItemTypeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 配置FindInfoDao -->
+	<bean id="findinfoDao" class="com.pojo.impl.FindInfoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 配置LostInfoDao -->
+	<bean id="lostinfoDao" class="com.pojo.impl.LostInfoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 配置VoteDao -->
+	<bean id="voteDao" class="com.pojo.impl.VoteDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 配置LFBangDao -->
+	<bean id="lfbangDao" class="com.pojo.impl.LFbangDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 配置ThankDao -->
+	<bean id="tinfoDao" class="com.pojo.impl.ThanksInfoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 配置TopDao -->
+	<bean id="topbydescDao" class="com.pojo.impl.TopByDescDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- 配置userService -->
+	<bean id="userService" class="com.pojo.impl.UserServiceImpl">
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+	<!-- 配置adminService -->
+	<bean id="adminService" class="com.pojo.impl.AdminServiceImpl">
+		<property name="adminDao" ref="adminDao"></property>
+	</bean>
+	<!-- 配置ItemTypeService -->
+	<bean id="itService" class="com.pojo.impl.ItemTypeServiceImpl">
+		<property name="itDao" ref="itDao"></property>
+		</bean>
+	<!-- 配置findinfoService -->
+	<bean id="findinfoService" class="com.pojo.impl.FindInfoServiceImpl">
+		<property name="findinfoDao" ref="findinfoDao"></property>
+	</bean>
+	<!-- 配置lostinfoService -->
+	<bean id="lostinfoService" class="com.pojo.impl.LostInfoServiceImpl">
+		<property name="lostinfoDao" ref="lostinfoDao"></property>
+	</bean>
+	<!-- 配置VoteService -->
+	<bean id="voteService" class="com.pojo.impl.VoteServiceImpl">
+		<property name="voteDao" ref="voteDao"></property>
+	</bean>
+	<!-- 配置lfbangService -->
+	<bean id="lfbangService" class="com.pojo.impl.LFbangServiceImpl">
+		<property name="lfbangDao" ref="lfbangDao"></property>
+	</bean>
+	<!-- 配置ThankService -->
+	<bean id="tinfoService" class="com.pojo.impl.ThanksInfoServiceImpl">
+		<property name="tinfoDao" ref="tinfoDao"></property>
+	</bean>
+	<!-- 配置TopService -->
+	<bean id="topbydescService" class="com.pojo.impl.TopByDescServiceImpl">
+		<property name="topbydescDao" ref="topbydescDao"></property>
+	</bean>
+	
+	<!-- 配置Struts2 Action -->
+	<!-- 注册 -->
+	<bean id="reg" class="com.pojo.action.register" scope="prototype">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<!-- 登陆 -->
+	<bean id="userlogin" class="com.pojo.action.Userlogin" scope="prototype">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<!-- 分页查询 -->
+	<bean id="listall" class="com.pojo.action.AllUser" scope="prototype">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<!-- 根据id修改信息 -->
+	<bean id="edit" class="com.pojo.action.EditUser" scope="prototype">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<!-- 根据id查找用户 -->
+	<bean id="fdetailforname" class="com.pojo.action.AdminFinfoByUid" scope="prototype">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<!-- 根据id删除用户 -->
+	<bean id="delete" class="com.pojo.action.DeleteUser" scope="prototype">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<!-- 投票 -->
+	<bean id="voted" class="com.pojo.action.Voted" scope="prototype">
+		<property name="voteService" ref="voteService"></property>
+	</bean>
+	<!-- 雷锋榜 -->
+	<bean id="leifengbang" class="com.pojo.action.LFBang" scope="prototype">
+		<property name="lfbangService" ref="lfbangService"></property>
+	</bean>
+	<!-- 感谢 -->
+	<bean id="thanksInfo" class="com.pojo.action.Thanks" scope="prototype">
+		<property name="tinfoService" ref="tinfoService"></property>
+	</bean>
+	<!-- 添加物品类型 -->
+	<bean id="itype" class="com.pojo.action.ItemType" scope="prototype">
+		<property name="itService" ref="itService"></property>
+	</bean>
+	<!-- 招领信息 -->
+	<bean id="findinfo" class="com.pojo.action.FoundInfo" scope="prototype">
+		<property name="findinfoService" ref="findinfoService"></property>
+	</bean>
+	<!-- 寻物信息 -->
+	<bean id="lostinfo" class="com.pojo.action.OLostInfo" scope="prototype">
+		<property name="lostinfoService" ref="lostinfoService"></property>
+	</bean>
+	<!-- 管理员 -->
+	<bean id="Addadmin" class="com.pojo.action.OperAdmin" scope="prototype">
+		<property name="adminService" ref="adminService"></property>
+	</bean>
+	<!-- 取前10条记录 -->
+	<bean id="Topinfo" class="com.pojo.action.TopByDesc" scope="prototype">
+		<property name="topbydescService" ref="topbydescService"></property>
+	</bean>
+</beans> 

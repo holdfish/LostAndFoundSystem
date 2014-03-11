@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+	<constant name="struts.multipart.saveDir" value="/tmp" />
+	<constant name="struts.multipart.maxSize" value="5242880" />
+	<constant name="struts.i18n.encoding" value="UTF-8"/> 
+	<constant name="struts.serve.static" value="false" />
+	<constant name="struts.locale" value="zh_CN" />
+	
+	<!-- 后台操作 -->
+	<!-- 添加管理员 -->
+	<package name="AddAdmin" extends="struts-default">
+		<action name="AddAdminJudgePower" class="Addadmin" method="powerToAdd">
+			<result name="success">Backstage/Admin/AddAdmin.jsp</result>			
+		</action>
+		<action name="AddAdmin" class="Addadmin" method="AddAdmin">
+			<result name="success">Backstage/Admin/addAdminSuccess.jsp</result>			
+		</action>
+	</package>
+	
+	<package name="login" extends="struts-default">
+		<action name="validateAction">
+			<result>Backstage/../validate.jsp</result>			
+		</action>
+		<action name="adminlogin" class="com.pojo.action.OperAdmin" method="Adminlogin">
+			<result name="input" type="dispatcher">Backstage/../AdminLogin.jsp</result>
+			<result name="success">../backstage.jsp</result>
+		</action>
+	</package>
+	
+	<!-- Admin招领信息 -->
+	<package name="AdminFinfo" extends="struts-default">
+        <action name="AdminAddFinfo" class="itype" method="findall">
+            <result name="success">Backstage/FindInfo/AdminAdd_findInfo.jsp</result>
+        </action>
+        <action name="AdminAddFindinfo" class="findinfo" method="AdminAddFindInfo">
+            <result name="success">Backstage/FindInfo/AddSuccess.jsp</result>
+        </action>
+        <action name="BsAllFinfo" class="itype" method="findall">
+            <result name="success" type="chain">BsFindAllFinfo</result>
+        </action>
+        <action name="BsFindAllFinfo" class="findinfo" method="QueryByTNP">
+            <result name="success">Backstage/FindInfo/AllFindInfo.jsp</result>
+        </action>
+        <action name="BsFDetail" class="fdetailforname">
+            <result name="success" type="chain">AdminFDetail</result>
+        </action>
+        <action name="AdminFDetail" class="findinfo" method="AdminQueryById">
+            <result name="success">Backstage/FindInfo/Finfo_Detail.jsp</result>
+        </action>
+        <action name="AdminDeleteFinfo" class="findinfo" method="AdminDeleteById">
+            <result name="success" type="redirect">BsAllFinfo.action</result>
+        </action>       
+	</package>
+	
+	<!-- Admin寻物信息 -->
+	<package name="AdminLinfo" extends="struts-default">
+        <action name="AdminAddLinfo" class="itype" method="findall">
+            <result name="success">Backstage/LostInfo/AdminAdd_lostInfo.jsp</result>
+        </action>       
+	</package>
+	
+	<!-- 物品类型操作-->
+	<package name="ItemType" extends="struts-default">
+		<action name="addItemType" class="itype" method="insert">
+            <result name="success" type="redirect">/listalluser.action</result>
+        </action>
+        <action name="AdminAddItype" class="itype" method="findall">
+            <result name="success">Backstage/FindInfo/AdminAdd_findInfo.jsp</result>
+        </action>       
+	</package>
+	
+	<!-- 用户 -->
+	<package name="findalluser" extends="struts-default">
+		<action name="listalluser" class="listall">
+            <result name="alluser">Backstage/User/findAllUser.jsp</result>
+        </action>
+	</package>
+	
+	<package name="adminEditUser" extends="struts-default">
+		<action name="adminedit" class="edit" method="edit">
+            <result name="edit">Backstage/User/adminEditUser.jsp</result>
+        </action>
+        <action name="adminupdate" class="edit" method="update">
+            <result name="success" type="redirect">/listalluser.action</result>
+            <result name="Error">Backstage/User/adminEditUser.jsp</result>
+        </action>
+	</package>
+	
+	<package name="Deleteuser" extends="struts-default">
+		<action name="deleteuser" class="delete">
+            <result name="success" type="redirect">/listalluser.action</result>
+        </action>
+	</package>
+	
+	<!-- 前台操作 -->
+	<!-- 注册登陆 -->
+	<package name="regsiter" extends="struts-default">
+		<action name="register" class="reg">
+			<result name="success">/regSuccess.jsp</result>
+			<result name="Error" >/register.jsp</result>
+		</action>
+	</package>
+	
+	<package name="Userlogin" extends="struts-default">
+		<action name="userlogin" class="userlogin" method="userlogin">
+			<result name="success">/index.jsp</result>
+			<result name="Error" >/Userlogin.jsp</result>
+		</action>
+		<action name="index" class="userlogin" method="loginOrnot">
+			<result name="success">/index.jsp</result>
+		</action>
+	</package>
+	
+	<!-- 投票 -->
+	<package name="Vote" extends="struts-default">
+		<action name="vote" class="voted" method="HbVoted">
+            <result name="success" type="chain">VoteForkindleness</result>
+            <result name="input">voteFail.jsp</result>
+        </action>
+        <action name="VoteForkindleness" class="leifengbang" method="votekindleness">
+            <result name="success">voteSuccess.jsp</result>
+        </action>
+	</package>
+	
+	<!-- 感谢 -->
+	<package name="thanks" extends="struts-default">
+		<action name="publishThanksInfo" class="thanksInfo" method="getusername">
+			<result name="success">/add_thanksInfo.jsp</result>
+		</action>
+		<action name="pubthanks" class="thanksInfo" method="publishThanks">
+			<result name="success">/pubSuccess.jsp</result>
+		</action>
+		<action name="AllTinfo" class="thanksInfo" method="FindAllInfo">
+			<result name="success">/getThanksInfo.jsp</result>
+		</action>
+	</package>
+	
+	<!-- 招领信息  -->
+	<package name="FindInfo" extends="struts-default">
+		<action name="AddFindItype" class="itype" method="findall">
+            <result name="success">/add_findInfo.jsp</result>
+        </action>
+		<action name="addFindInfo" class="findinfo" method="ReleaseFindInfo">
+            <result name="success">/ReleaseFinfoSuccess.jsp</result>
+        </action>
+        <action name="QueryFDetail" class="findinfo" method="QueryById">
+            <result name="success">/find_detail.jsp</result>
+        </action>
+        <action name="CodelookContact" class="findinfo" method="CodelookContact">
+            <result name="success">/CodeForLookContact.jsp</result>
+        </action>
+        <action name="code" class="com.ImageCode.Action.CodeAction" method="init">
+            <result name="success" type="chain">lookContact</result>
+            <result name="input">/CodeForLookContact.jsp</result>
+        </action>
+        <action name="lookContact" class="findinfo" method="LookContactById">
+            <result name="success">/ContactDetail.jsp</result>
+        </action>
+        <action name="AllFinfo" class="itype" method="findall">
+            <result name="success" type="chain">FindAllFinfo</result>
+        </action>
+        <action name="FindAllFinfo" class="findinfo" method="FindAllFinfo">
+            <result name="success">/find_list.jsp</result>
+        </action>
+        <action name="lookvalidateAction">
+			<result>/validate.jsp</result>			
+		</action>
+	</package>
+	
+	<!-- 寻物信息  -->
+	<package name="LostInfo" extends="struts-default">
+		<action name="AddLostItype" class="itype" method="findall">
+            <result name="success">/add_lostInfo.jsp</result>
+        </action>
+		<action name="addLostInfo" class="lostinfo" method="ReleaseLostInfo">
+            <result name="success">/ReleaseLinfoSuccess.jsp</result>
+        </action>
+        <action name="QueryLDetail" class="lostinfo" method="QueryById">
+            <result name="success">/lost_detail.jsp</result>
+        </action>
+        <action name="AllLinfo" class="itype" method="findall">
+            <result name="success" type="chain">FindAllLinfo</result>
+        </action>
+        <action name="FindAllLinfo" class="lostinfo" method="FindAllLinfo">
+            <result name="success">/lost_list.jsp</result>
+        </action>
+	</package>
+	
+	<!-- 查找前十条记录 -->
+	<package name="TopInfo" extends="struts-default">
+		<action name="TopInfo" class="Topinfo">
+            <result name="success">/default.jsp</result>
+        </action>
+	</package>
+	
+</struts>

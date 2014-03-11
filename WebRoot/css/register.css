@@ -1,0 +1,59 @@
+body{
+         font-family: Arial,Helvetica,ËÎÌו;
+         font-size:12px;
+         text-align:center;
+         background-color:#f2f7e8;
+      }
+
+      h3 {
+        font-size:14px;     
+        font-decoration:underline;
+      }
+
+      input{
+        padding:1px;
+        margin:2px;
+        font-size:12px;
+        border:1px solid #C0C0C0;
+        background-color:#e9f9c9;
+      }
+     
+     select,textarea{
+        padding:1px;
+        margin:2px;
+        font-size:12px;
+        border:1px solid #C0C0C0;
+      }
+      
+      .size{
+      	width:138px;
+      }
+          
+      #formwrapper {
+        width:450px;
+        margin:0px auto;
+        margin-top:100px;
+        padding:20px;
+        text-align:left;
+        border:1px #1E7ACE solid;
+        background:url(../images/reg_bg.gif) no-repeat;
+      }
+
+      fieldset {      
+        padding:10px;
+        margin-top:5px;
+        border:1px solid #1E7ACE;
+        background:url(../images/reg.gif) no-repeat;
+      }
+      fieldset label {
+        float:left;
+        width:120px;
+        text-align:right;
+        padding:5px;
+      } 
+ 
+      fieldset div {
+        clear:left;
+        margin-bottom:2px;
+      }
+      .enter{ text-align:center;}

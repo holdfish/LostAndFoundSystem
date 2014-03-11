@@ -1,0 +1,23 @@
+@charset "gb2312";
+@import url(base.css);
+@import url(commen.css);
+@import url(index.css);
+/* CSS Document */
+#pagenav a{
+
+	text-decoration: none;
+}
+#pagenav a:hover{
+	text-decoration: underline;
+}
+#search_pagenav a{
+	text-decoration: none;
+}
+#search_pagenav a:hover{
+	text-decoration: none;
+}
+.allInfo_tittle{width:628px;height:29px;background:#cbcdcc;}
+.typeSelect{margin:5px 10px 0 0;}
+.page_number{width:600px;padding-top:20px;bottom:28px;left:15px;border-top:1px #ccc dashed;}
+.pageNumber_turn{display:inline;}
+

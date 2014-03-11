@@ -1,0 +1,35 @@
+@charset "gb2312";
+@import url(base.css);
+@import url(commen.css);
+/* CSS Document */
+/*tittle*/
+.info_tittle{width:630px;overflow:hidden;}
+.info_tittle li{width:207px;padding-left:2px;float:left;}
+/*table*/
+.table{width:628px;margin-top:20px;table-layout:fixed;}
+.table td{width:117px;text-align:center;word-break : break-all;}
+/*more*/
+.info p{background:url(../images/more_pic.gif) no-repeat;padding-left:18px;line-height:14px;bottom:28px;right:20px;}
+/*fridendship*/
+.friendship{width:916px;}
+.friendship_tittle{width:132px;height:28px;display:block;}
+.friendship p{width:934px;border-top:2px #c5c5c5 solid;}
+.tabs_active {
+    background: url("../images/newSeek.gif") repeat-x scroll 0 0 transparent;
+    border-right: 1px solid #C6C6C6;
+	float:left;
+    color: #CC0808;
+}
+.tabs_unactive {
+    background: url("../images/newGet.gif") repeat-x scroll 0 -36px transparent;
+    border-right: 1px solid #C6C6C6;
+	float:left;
+}
+.tabs_active, .tabs_unactive {
+    cursor: pointer;
+    float: left;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    width: 120px;
+}

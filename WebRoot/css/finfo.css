@@ -1,0 +1,52 @@
+@CHARSET "UTF-8";
+body { 
+	font: normal 12px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif; 
+	color: #4f6b72; 
+	background: #E6EAE9; 
+} 
+
+a { 
+	color: #c75f3e; 
+} 
+
+#mytable { 
+	width: 700px; 
+	padding: 0; 
+	margin: 0; 
+} 
+ 
+.odd { 
+	font: bold 14px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif; 
+	color: #4f6b72; 
+	border-right: 1px solid #C1DAD7;
+	border-left: 1px solid #C1DAD7;
+	border-bottom: 1px solid #C1DAD7; 
+	border-top: 1px solid #C1DAD7; 
+	text-align: center;
+	padding: 8px 0px 8px 0px;
+	background: #CAE8EA; 
+}
+
+.even { 
+	border-right: 1px solid #C1DAD7;
+	border-left: 1px solid #87fb17;
+	border-bottom: 1px solid #C1DAD7; 
+	border-top: 1px solid #C1DAD7;
+	background: #fff; 
+	font-size:14px; 
+	padding: 6px 6px 6px 18px; 
+	color: #4f6b72; 
+} 
+/*power by www.winshell.cn*/ 
+
+td.alt { 
+background: #F5FAFA; 
+color: #797268; 
+} 
+
+/*---------for IE 5.x bug*/ 
+html>body td{ font-size:11px;} 
+body,td, { 
+	font-family: 宋体, Arial; 
+	font-size: 12px; 
+}

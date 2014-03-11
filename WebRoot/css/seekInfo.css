@@ -1,0 +1,21 @@
+@charset "gb2312";
+@import url(base.css);
+@import url(commen.css);
+/* CSS Document */
+/*seekInfo*/
+.seekInfo{width:420px;height:242px;}
+.seekInfo_tittle{width:140px;height:18px;margin:15px 0 0 17px;background:url(../images/seekInfo_tittle.gif) no-repeat;}
+.findInfo_tittle{width:140px;height:18px;margin:15px 0 0 17px;background:url(../images/findInfo_tittle.gif) no-repeat;}
+.seekInfo p{margin-left:18px;}
+.InfoDescribe{width:390px;margin:30px 0 0 0;}
+.describe{margin-top:0px;}
+.describeMain{width:300px;}
+.user_photo{width:135px;margin:15px 20px 0 0;}
+.clew{width:530px;height:98px;border-top:1px #ccc dashed;}
+.clew h1{color:#e83433;height:30px;}
+.clew li{width:530px;border-bottom:1px #ccc dashed;font-size:12px;line-height:180%;}
+.comment{width:530px;height:130px;}
+.comment_area{width:530px;height:90px;margin-top:10px;border:1px #ccc solid;}
+.comment p{margin:10px 0 0 230px;;}
+.comment_name{margin-top:6px;}
+.comment_submi{margin-top:4px;}

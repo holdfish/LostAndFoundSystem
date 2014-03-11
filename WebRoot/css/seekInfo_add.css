@@ -1,0 +1,9 @@
+@charset "gb2312";
+@import url(base.css);
+@import url(commen.css);
+/* CSS Document */
+.addInfo_tittle{width:628px;height:29px;background:#cbcdcc;}
+.add_find_pic{width:268px;height:160px;background:url(../images/add_find_pic.gif) no-repeat 20px 28px;}
+.add_lost_pic{width:268px;height:160px;background:url(../images/add_lost_pic.gif) no-repeat 20px 30px;}
+.td2{width:300px;}
+
