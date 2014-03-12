@@ -4,11 +4,11 @@ import com.pojo.model.Admin;
 
 public interface AdminDao {
 	/*
-	 *Ìí¼Ó¹ÜÀíÔ± add by GenXL
+	 *æ·»åŠ ç®¡ç†å‘˜add by GenXL
 	 */
 	public void add (Admin admin);
 	/*
-	 *¹ÜÀíÔ± µÇÂ½
+	 *ç®¡ç†å‘˜
 	 */
 	public Admin adminlogin (String login_name , String password);
 }
