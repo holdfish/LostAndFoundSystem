@@ -4,7 +4,7 @@ import com.pojo.model.Admin;
 
 public interface AdminDao {
 	/*
-	 *添加管理员 
+	 *添加管理员 add by GenXL
 	 */
 	public void add (Admin admin);
 	/*
